@@ -10,7 +10,11 @@ module.exports = function(app) {
   connection.connect()
   // Displays all reservation
   app.get('/api/friends', function(req, res) {
-    connection.query('SELECT * FROM friends', function(error, results, fields) {
+    connection.query('SELECT nam FROM friends', function(
+      error,
+      results,
+      fields
+    ) {
       if (error) res.send(error)
       else res.json(results)
     })
