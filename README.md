@@ -1,6 +1,6 @@
 # Friend Finder - Node, Express, MySQL
 
-![](Friend Finder.gif)
+![](Friend-Finder.gif)
 
 ### Overview
 
