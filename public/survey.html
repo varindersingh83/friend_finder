@@ -188,7 +188,7 @@
             <h2 class="modal-title" id="match-name"></h2>
           </div>
           <div class="modal-body">
-            <img id="match-img" src="" />
+            <img id="match-img" src="" style="max-height: 400px;" />
           </div>
           <div class="modal-footer">
             <button
@@ -248,7 +248,11 @@
             method: 'POST',
             data: userData
           }).then(function(data) {
-            alert('something)
+            console.log('data = ', data)
+            $('#match-name').text(data.name)
+            $('#match-img').attr('src', data.photo)
+            $('#results-modal').modal('toggle')
+            // alert('something')
           })
 
           // $.post('/api/friends', userData, function(data) {

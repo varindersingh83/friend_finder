@@ -66,11 +66,14 @@ module.exports = function(app) {
         }
         // connection.end()
         console.log('friend name = ' + friend.name)
-        return friend
+        res.json(friend)
+        // return friend
       })
     }
 
-    res.json(findFriend())
+    findFriend()
+
+    // res.json(findFriend())
     // friendsData.push(req.body)
     // console.log('JSON Sent and user pushed to array')
   })
