@@ -37,7 +37,7 @@
           unexplored ideas and plans.
         </h5>
         <select class="chosen-select" id="q1" name="q1">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -50,7 +50,7 @@
           experience than your imagination.
         </h5>
         <select class="chosen-select" id="q2" name="q2">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -63,7 +63,7 @@
           focused even when there is some pressure.
         </h5>
         <select class="chosen-select" id="q3" name="q3">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -76,7 +76,7 @@
           curiosity.
         </h5>
         <select class="chosen-select" id="q4" name="q4">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -86,7 +86,7 @@
         <br /><br />
         <h5><strong>Question 5:</strong> People can rarely upset you.</h5>
         <select class="chosen-select" id="q5" name="q5">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -99,7 +99,7 @@
           to other people’s feelings.
         </h5>
         <select class="chosen-select" id="q6" name="q6">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -112,7 +112,7 @@
           important than people’s sensitivities.
         </h5>
         <select class="chosen-select" id="q7" name="q7">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -125,7 +125,7 @@
           and ideas.
         </h5>
         <select class="chosen-select" id="q8" name="q8">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -138,7 +138,7 @@
           respected regardless of whether they are supported by facts or not.
         </h5>
         <select class="chosen-select" id="q9" name="q9">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -151,7 +151,7 @@
           time with a group of people.
         </h5>
         <select class="chosen-select" id="q10" name="q10">
-          <option value=""></option>
+          <option value="0"></option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -203,11 +203,7 @@
       </div>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $('#submit').on('click', function(event) {
@@ -247,11 +243,20 @@
             ]
           }
 
-          $.post('/api/friends', userData, function(data) {
-            $('#match-name').text(data.name)
-            $('#match-img').attr('src', data.photo)
-            $('#results-modal').modal('toggle')
+          $.ajax({
+            url: '/api/friends',
+            method: 'POST',
+            data: userData
+          }).then(function(data) {
+            alert('something)
           })
+
+          // $.post('/api/friends', userData, function(data) {
+          //   alert(data.name)
+          //   $('#match-name').text(data.name)
+          //   $('#match-img').attr('src', data.photo)
+          //   $('#results-modal').modal('toggle')
+          // })
         } else {
           alert('Please fill out all fields before submitting!')
         }
